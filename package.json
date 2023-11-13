@@ -20,5 +20,8 @@
     "mongoose": "^8.0.0",
     "nodemon": "^3.0.1",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6"
   }
 }
