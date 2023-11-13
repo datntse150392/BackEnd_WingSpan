@@ -2,7 +2,7 @@
   "name": "backend_ongbutdicode",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
