@@ -1,4 +1,6 @@
 require("dotenv").config();
+const cors = require("cors");
+const createProxyMiddleware = require("http-proxy-middleware");
 const express = require("express");
 const routers = require("./src/app/routes");
 // Kết nối đến MongoDB
@@ -7,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.json());
+app.use(express.json(), cors());
 connectDB();
 // Gắn các route
 routers(app);
