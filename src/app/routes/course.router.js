@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { getCourses } = require("../controllers/course.controller");
+const {
+  getCourses,
+  getCourseById,
+} = require("../controllers/course.controller");
 
 router.get("/getAllCourses", getCourses);
-
+router.get("/:id", getCourseById);
 module.exports = router;
