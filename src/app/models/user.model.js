@@ -4,15 +4,11 @@ const userSchema = new mongoose.Schema({
   _id: {
     type: String,
   },
-  username: {
-    type: String,
-  },
+  username: { type: String, unique: true },
   fullName: {
     type: String,
   },
-  email: {
-    type: String,
-  },
+  email: { type: String, unique: true },
   password: {
     type: String,
   },
