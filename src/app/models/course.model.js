@@ -17,7 +17,7 @@ const courseSchema = new mongoose.Schema({
     type: Array,
   },
   enrollmentCount: {
-    type: String,
+    type: Number,
   },
   status: {
     type: String,

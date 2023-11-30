@@ -61,7 +61,6 @@ module.exports = {
 
       // *Tạo người dùng mới và lưu vào MongoDB
       const newUser = new userSchema({
-        _id: uuidv4(),
         username: req.body.username,
         fullName: "Thành viên WingSpan",
         password: req.body.password ? req.body.password : "123456",
