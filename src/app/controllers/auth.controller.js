@@ -64,9 +64,9 @@ module.exports = {
         _id: uuidv4(),
         username: req.body.username,
         fullName: "Thành viên WingSpan",
-        password: req.body.password,
+        password: req.body.password ? req.body.password : "123456",
         email: req.body.email,
-        profileImage: "",
+        profileImage: req.body.profileImage ? req.body.profileImage : "",
         dateOfBirth: "",
         enrolledCourses: [],
       });
@@ -78,6 +78,36 @@ module.exports = {
       });
     } catch (error) {
       console.log(error);
+      res.status(500).json({ status: 500, message: error.message });
+    }
+  },
+
+  /**
+   *  Kiểm tra xem người dùng có trong hệ thống không ?
+   */
+  isCheckAccount: async (req, res) => {
+    const { email } = req.body;
+
+    try {
+      // *Kiểm tra xem tên người dùng đã tồn tại chưa
+      const existingUser = await userSchema.findOne({ email });
+      if (!email) {
+        return res.status(400).json({
+          status: 400,
+          message: "Email is required",
+        });
+      }
+      if (existingUser) {
+        return res.status(200).json({
+          status: 200,
+          message: "Founded",
+        });
+      }
+      res.status(200).json({
+        status: 200,
+        message: "Not Found",
+      });
+    } catch (error) {
       res.status(500).json({ status: 500, message: error.message });
     }
   },
