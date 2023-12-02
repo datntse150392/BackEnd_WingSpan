@@ -34,4 +34,43 @@ module.exports = {
       });
     }
   },
+
+  /**
+   *  Update a user by email
+   */
+  updateInfo: async (req, res) => {
+    const { email, fullName } = req.body;
+
+    try {
+      if (!email) {
+        return res.status(400).json({
+          status: 400,
+          message: "Email is required",
+        });
+      }
+
+      const user = await userModel.findOneAndUpdate(
+        { email: email },
+        { fullName: fullName },
+        { new: true }
+      );
+
+      if (!user) {
+        res.status(404).json({
+          status: 404,
+          message: "User not found",
+        });
+      }
+
+      return res.status(200).json({
+        status: 200,
+        message: "User updated successfully",
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error,
+      });
+    }
+  },
 };
