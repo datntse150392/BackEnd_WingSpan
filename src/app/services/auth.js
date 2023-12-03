@@ -15,23 +15,27 @@ module.exports = {
     new Promise(async (resolve, reject) => {
       try {
         const response = await userSchema.findOne({ email });
-        console.log(response);
+        if (response) {
+          const isCheckPassword = response;
+          // && bcrypt.compareSync(password, response.password);
+          const token = isCheckPassword
+            ? jwt.sign(
+                {
+                  ...response,
+                },
+                process.env.JWT_SECRET,
+                { expiresIn: "5d" }
+              )
+            : "";
 
-        const isCheckPassword = response;
-        // && bcrypt.compareSync(password, response.password);
-        const token = isCheckPassword
-          ? jwt.sign(
-              {
-                ...response,
-              },
-              process.env.JWT_SECRET,
-              { expiresIn: "5d" }
-            )
-          : "";
-
+          resolve({
+            status: 200,
+            access_token: token && `Bearer ${token}`,
+          });
+        }
         resolve({
-          status: 200,
-          access_token: token && `Bearer ${token}`,
+          status: 404,
+          message: "Not Found",
         });
       } catch (error) {
         reject(error);
