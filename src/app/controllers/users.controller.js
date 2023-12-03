@@ -36,6 +36,31 @@ module.exports = {
   },
 
   /**
+   *  Get User by email
+   */
+  getUserbyEmail: async (req, res) => {
+    const { email } = req.body;
+    try {
+      const user = await userModel.findOne({ email });
+      if (user) {
+        return res.status(200).json({
+          status: 200,
+          message: "User Founded",
+          data: { userInfo: user },
+        });
+      }
+      return res.status(404).json({
+        status: 404,
+        message: "Not Found",
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error,
+      });
+    }
+  },
+  /**
    *  Update a user by email
    */
   updateInfo: async (req, res) => {
@@ -65,6 +90,7 @@ module.exports = {
       return res.status(200).json({
         status: 200,
         message: "User updated successfully",
+        data: { userInfo: user },
       });
     } catch (error) {
       return res.status(500).json({

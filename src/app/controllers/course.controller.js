@@ -47,7 +47,7 @@ module.exports = {
     }
     try {
       // Check if the user already enrolled in the course
-      const user = await userSchema.findById({ _id: userId });
+      const user = await userSchema.findById(userId);
 
       if (!user) {
         return res.status(404).json({

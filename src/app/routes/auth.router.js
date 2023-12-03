@@ -4,8 +4,9 @@ const {
   loginAccount,
   registerAccount,
   isCheckAccount,
+  signin,
 } = require("../controllers/auth.controller");
-
+router.post("/signinAccount", signin);
 router.post("/signin", loginAccount);
 router.post("/signup", registerAccount);
 router.post("/isCheckAccount", isCheckAccount);

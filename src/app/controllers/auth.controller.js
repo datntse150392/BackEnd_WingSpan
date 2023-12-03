@@ -1,10 +1,32 @@
 const userSchema = require("../models/user.model");
-const bcrypt = require("bcrypt"); // Để sử dụng bcrypt để mã hóa mật khẩu
-const { v4: uuidv4 } = require("uuid");
+const joi = require("joi");
+const { email, password } = require("../helpers/joiSchema");
+const servies = require("../services/auth");
+
 module.exports = {
   /**
    *  Đăng nhập tài khoản vào hệ thống
    */
+
+  signin: async (req, res) => {
+    try {
+      // const { err } = joi.object({ email, password }).validate(req.body);
+      // if (err) {
+      //   return res.status(400).json({
+      //     status: 400,
+      //     message: err,
+      //   });
+      // }
+      const response = await servies.signin(req.body);
+      return res.status(200).json(response);
+    } catch (error) {
+      res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
+    }
+  },
+
   loginAccount: async (req, res, next) => {
     const { username, password } = req.body;
 

@@ -1,6 +1,5 @@
 require("dotenv").config();
 const cors = require("cors");
-const createProxyMiddleware = require("http-proxy-middleware");
 const express = require("express");
 const routers = require("./app/routes");
 // Kết nối đến MongoDB
