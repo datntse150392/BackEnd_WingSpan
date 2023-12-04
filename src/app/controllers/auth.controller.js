@@ -1,23 +1,23 @@
 const userSchema = require("../models/user.model");
-const joi = require("joi");
-const { email, password } = require("../helpers/joiSchema");
 const servies = require("../services/auth");
-
+const { userJoiSchema } = require("../helpers/joiSchema");
+const {
+  badRequest,
+  interalServerError,
+} = require("../middlewares/handleError");
 module.exports = {
   /**
    *  Đăng nhập tài khoản vào hệ thống
    */
-
-  signin: async (req, res) => {
+  signIn: async (req, res) => {
     try {
-      // const { err } = joi.object({ email, password }).validate(req.body);
-      // if (err) {
-      //   return res.status(400).json({
-      //     status: 400,
-      //     message: err,
-      //   });
-      // }
-      const response = await servies.signin(req.body);
+      // Validate the user data against the Joi schema
+      const { error } = userJoiSchema.validate(req.body);
+      if (error) {
+        return badRequest(error, res);
+      }
+
+      const response = await servies.signIn(req.body);
       return res.status(200).json(response);
     } catch (error) {
       res.status(500).json({
@@ -27,7 +27,37 @@ module.exports = {
     }
   },
 
-  loginAccount: async (req, res, next) => {
+  /**
+   * Sign up a new user account.
+   * @param {Object} req - The request object.
+   * @param {Object} res - The response object.
+   * @returns {void}
+   * @throws {Error} If there's an issue with the sign-up process.
+   */
+  signUp: async (req, res) => {
+    try {
+      // Validate the user data against the Joi schema
+      const { error } = userJoiSchema.validate(req.body);
+      if (error) {
+        return badRequest(error, res);
+      }
+
+      // Call the function check user is contains in the system
+      const { email } = req.body;
+      const user = await userSchema.findOne({ email });
+      if (user) {
+        return badRequest("The user is contained in the system", res);
+      } else {
+        const response = await servies.signUp(req.body);
+        return res.status(200).json(response);
+      }
+    } catch (error) {
+      console.log(error);
+      return interalServerError(res);
+    }
+  },
+
+  loginAccount: async (req, res) => {
     const { username, password } = req.body;
 
     try {
@@ -104,8 +134,16 @@ module.exports = {
   },
 
   /**
-   *  Kiểm tra xem người dùng có trong hệ thống không ?
+   * Is check the user is contained in the system ?
+   * @param {email}
+   * @return {boolean}
+   * @throws {Error} If there's an issue with the sign-up process.
    */
+  isCheckUser: async (email) => {
+    const user = await userSchema.findOne({ email });
+    return user ? true : false;
+  },
+
   isCheckAccount: async (req, res) => {
     const { email } = req.body;
 

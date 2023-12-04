@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("../middlewares/verifyToken");
 const {
   getUsers,
   getUser,
   getUserbyEmail,
   updateInfo,
 } = require("../controllers/users.controller");
+const { verifyToken } = require("../middlewares/verifyToken");
 
 /*
   PUBLIC ROUTES
@@ -18,7 +18,7 @@ router.post("/getUserByEmail", getUserbyEmail);
 /*
   PRIVATE ROUTES
 */
-console.log(verifyToken);
+router.use(verifyToken);
 router.put("/updateInfo", updateInfo);
 
 module.exports = router;

@@ -1,6 +1,8 @@
-const joi = require("joi");
+const Joi = require("joi");
 
-module.exports = {
-  email: joi.string().pattern(new RegExp("gmail.com$")).required(),
-  const: joi.string().min(6).required(),
-};
+const userJoiSchema = Joi.object({
+  email: Joi.string().email().required(),
+  fullName: Joi.string().required(),
+});
+
+module.exports = { userJoiSchema };
