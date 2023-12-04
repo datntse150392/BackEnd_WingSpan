@@ -1,6 +1,9 @@
 const userSchema = require("../models/user.model");
 const servies = require("../services/auth");
-const { userJoiSchema } = require("../helpers/joiSchema");
+const {
+  userJoiSchema,
+  userJoiSchemaForSignUp,
+} = require("../helpers/joiSchema");
 const {
   badRequest,
   interalServerError,
@@ -37,7 +40,7 @@ module.exports = {
   signUp: async (req, res) => {
     try {
       // Validate the user data against the Joi schema
-      const { error } = userJoiSchema.validate(req.body);
+      const { error } = userJoiSchemaForSignUp.validate(req.body);
       if (error) {
         return badRequest(error, res);
       }
@@ -104,14 +107,6 @@ module.exports = {
           message: "User already exists",
         });
       }
-      // // Tạo salt
-      // const saltRounds = 10;
-      // const salt = await bcrypt.genSalt(saltRounds);
-
-      // // Mã hóa mật khẩu với salt
-      // const hashedPassword = await bcrypt.hash(password, salt);
-
-      // *Tạo người dùng mới và lưu vào MongoDB
       const newUser = new userSchema({
         username: req.body.username,
         fullName: "Thành viên WingSpan",

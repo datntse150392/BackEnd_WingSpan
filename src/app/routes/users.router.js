@@ -5,6 +5,7 @@ const {
   getUser,
   getUserbyEmail,
   updateInfo,
+  getUserbyUserId,
 } = require("../controllers/users.controller");
 const { verifyToken } = require("../middlewares/verifyToken");
 
@@ -14,6 +15,7 @@ const { verifyToken } = require("../middlewares/verifyToken");
 router.get("/getAllUsers", getUsers);
 router.post("/getUser", getUser);
 router.post("/getUserByEmail", getUserbyEmail);
+router.post("/getUserByUserId", getUserbyUserId);
 
 /*
   PRIVATE ROUTES

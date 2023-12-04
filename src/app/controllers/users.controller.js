@@ -1,12 +1,31 @@
 const userModel = require("../models/user.model");
-
+const services = require("../services/user");
+const { interalServerError } = require("../middlewares/handleError");
 module.exports = {
   /**
-   *  get all account
+   * Logic code handle get all user account of the system
+   * @param {*} res
+   * @returns
    */
   getUsers: async (res) => {
     const accounts = await userModel.find({});
     return res.status(200).json(accounts);
+  },
+
+  /**
+   * Logic code handle get User by userId
+   * @param {*} req
+   * @param {*} res
+   * @returns
+   */
+  getUserbyUserId: async (req, res) => {
+    try {
+      const response = await services.getUserByUserId(req.body);
+      return res.status(200).json(response);
+    } catch (error) {
+      console.log(error);
+      interalServerError(res);
+    }
   },
 
   /**
