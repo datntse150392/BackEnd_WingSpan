@@ -2,7 +2,7 @@ const courseSchema = require("../models/course.model");
 const userSchema = require("../models/user.model");
 module.exports = {
   /**
-   *  Get all c\Courses
+   *  Get all Courses
    */
   getCourses: async (req, res, next) => {
     const courses = await courseSchema.find({});
@@ -15,7 +15,7 @@ module.exports = {
   /**
    *  Get Course by ID Course
    */
-  getCourseById: async (req, res, next) => {
+  getCourseById: async (req, res) => {
     const courseId = req.params.id; // Assuming your route is defined as '/courses/:id'
     try {
       const course = await courseSchema.findById(courseId);
@@ -35,6 +35,7 @@ module.exports = {
   },
 
   /**
+   * @parmas {_id, courseId}
    * Register the Course
    */
   registerCourse: async (req, res) => {

@@ -12,11 +12,11 @@ const {
  * Public Router
  */
 router.get("/getAllCourses", getCourses);
+router.get("/:id", getCourseById);
 
 /**
  * Private Router
  */
 router.use(verifyToken);
-router.get("/:id", getCourseById);
 router.post("/enrollmentCourse", registerCourse);
 module.exports = router;
