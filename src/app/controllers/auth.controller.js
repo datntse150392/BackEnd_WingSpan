@@ -87,57 +87,11 @@ module.exports = {
   },
 
   /**
-   *  Đăng ký tài khoản vào hệ thống
-   */
-  registerAccount: async (req, res) => {
-    const { email, username, password } = req.body;
-
-    try {
-      // *Kiểm tra xem tên người dùng đã tồn tại chưa
-      const existingUser = await userSchema.findOne({ username, password });
-      if (!username || !password || !email) {
-        return res.status(400).json({
-          status: 400,
-          message: "Username, password, and email are required",
-        });
-      }
-      if (existingUser) {
-        return res.status(400).json({
-          status: 400,
-          message: "User already exists",
-        });
-      }
-      const newUser = new userSchema({
-        username: req.body.username,
-        fullName: "Thành viên WingSpan",
-        password: req.body.password ? req.body.password : "123456",
-        email: req.body.email,
-        profileImage: req.body.profileImage ? req.body.profileImage : "",
-        dateOfBirth: "",
-        enrolledCourses: [],
-      });
-      await newUser.save();
-      res.status(201).json({
-        status: 200,
-        message: "Register success",
-        data: { user: newUser },
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ status: 500, message: error.message });
-    }
-  },
-
-  /**
    * Is check the user is contained in the system ?
    * @param {email}
    * @return {boolean}
    * @throws {Error} If there's an issue with the sign-up process.
    */
-  isCheckUser: async (email) => {
-    const user = await userSchema.findOne({ email });
-    return user ? true : false;
-  },
 
   isCheckAccount: async (req, res) => {
     const { email } = req.body;
