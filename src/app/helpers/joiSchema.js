@@ -9,4 +9,8 @@ const userJoiSchemaForSignUp = Joi.object({
   fullName: Joi.string().required(),
 });
 
-module.exports = { userJoiSchema, userJoiSchemaForSignUp };
+const cartJoiSchema = Joi.object({
+  userId: Joi.string().required(),
+});
+
+module.exports = { userJoiSchema, userJoiSchemaForSignUp, cartJoiSchema };

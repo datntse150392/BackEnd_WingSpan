@@ -11,9 +11,11 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json(), cors());
+
 connectDB();
 // Gắn các route
 routers(app);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
