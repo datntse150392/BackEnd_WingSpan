@@ -18,9 +18,18 @@ const addToCartJoiSchema = Joi.object({
   courseId: Joi.string().required(),
 });
 
+const transactionJoiSchema = Joi.object({
+  cartId: Joi.string().required(),
+  amount: Joi.string().required(),
+  payer: Joi.string().required(),
+  transactionType: Joi.string().required(),
+  status: Joi.string().required(),
+});
+
 module.exports = {
   userJoiSchema,
   userJoiSchemaForSignUp,
   cartJoiSchema,
   addToCartJoiSchema,
+  transactionJoiSchema,
 };
