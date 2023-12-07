@@ -26,7 +26,7 @@ const courseSchema = new mongoose.Schema({
     type: String,
   },
   amount: {
-    type: String,
+    type: Number,
   },
 });
 module.exports = mongoose.model("course", courseSchema);

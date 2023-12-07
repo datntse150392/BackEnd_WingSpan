@@ -13,4 +13,14 @@ const cartJoiSchema = Joi.object({
   userId: Joi.string().required(),
 });
 
-module.exports = { userJoiSchema, userJoiSchemaForSignUp, cartJoiSchema };
+const addToCartJoiSchema = Joi.object({
+  userId: Joi.string().required(),
+  courseId: Joi.string().required(),
+});
+
+module.exports = {
+  userJoiSchema,
+  userJoiSchemaForSignUp,
+  cartJoiSchema,
+  addToCartJoiSchema,
+};
