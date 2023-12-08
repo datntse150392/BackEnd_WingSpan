@@ -24,6 +24,7 @@ const transactionJoiSchema = Joi.object({
   payer: Joi.string().required(),
   transactionType: Joi.string().required(),
   status: Joi.string().required(),
+  customerEmail: Joi.string().email().required(),
 });
 
 module.exports = {
