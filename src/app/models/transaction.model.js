@@ -6,12 +6,15 @@ const mongoose = require("mongoose");
 const transactionSchema = new mongoose.Schema({
   _id: {
     type: Object,
+    required: true,
   },
   userId: {
     type: String,
+    required: true,
   },
   items: {
     type: Array,
+    required: true,
   },
   count: {
     type: Number,
@@ -20,7 +23,8 @@ const transactionSchema = new mongoose.Schema({
     type: Number,
   },
   payer: {
-    type: String,
+    type: Object,
+    required: true,
   },
   transactionType: {
     type: String,

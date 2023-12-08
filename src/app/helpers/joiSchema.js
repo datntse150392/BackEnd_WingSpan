@@ -20,8 +20,8 @@ const addToCartJoiSchema = Joi.object({
 
 const transactionJoiSchema = Joi.object({
   cartId: Joi.string().required(),
-  amount: Joi.string().required(),
-  payer: Joi.string().required(),
+  amount: Joi.number().required(),
+  payer: Joi.object().required(),
   transactionType: Joi.string().required(),
   status: Joi.string().required(),
   customerEmail: Joi.string().email().required(),
