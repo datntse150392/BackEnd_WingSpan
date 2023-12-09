@@ -1,5 +1,9 @@
 const cartService = require("../services/cart");
-const { cartJoiSchema, addToCartJoiSchema } = require("../helpers/joiSchema");
+const {
+  cartJoiSchema,
+  addToCartJoiSchema,
+  deleteCartJoiSchema,
+} = require("../helpers/joiSchema");
 const {
   badRequest,
   interalServerError,
@@ -20,10 +24,8 @@ module.exports = {
       const response = await cartService.getCartItems(req.body);
       return res.status(200).json(response);
     } catch (error) {
-      res.status(500).json({
-        status: 500,
-        message: error.message,
-      });
+      console.log(error);
+      return interalServerError();
     }
   },
 
@@ -45,6 +47,24 @@ module.exports = {
         status: 500,
         message: error.message,
       });
+    }
+  },
+
+  /**
+   * Logic code: Delete cart by cartId
+   */
+  deleteCart: async (req, res) => {
+    try {
+      const { error } = deleteCartJoiSchema.validate(req.body);
+      if (error) {
+        return badRequest(error, res);
+      }
+
+      const response = await cartService.deleteCart(req.body);
+      return res.status(200).json(response);
+    } catch (error) {
+      console.log(error);
+      return interalServerError();
     }
   },
 };

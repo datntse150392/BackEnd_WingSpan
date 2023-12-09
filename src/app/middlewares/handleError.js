@@ -24,10 +24,10 @@ module.exports = {
     });
   },
 
-  interalServerError: (res) => {
+  interalServerError: () => {
     const error = createError.InternalServerError();
-    return res.status(error.status).json({
-      status: error.status,
+    return res.status(500).json({
+      status: 500,
       message: error.message,
     });
   },

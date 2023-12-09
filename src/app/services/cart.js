@@ -86,6 +86,26 @@ module.exports = {
     }),
 
   /**
-   *
+   *  Logic server: Delete Cart by CartId
    */
+  deleteCart: ({ cartId }) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        // Find Cart by cart Id
+        const cart = await cartSchema.findByIdAndDelete(cartId);
+        if (!cart) {
+          resolve({
+            status: 404,
+            message: "Not Found",
+          });
+        }
+
+        resolve({
+          status: 200,
+          message: "Cart deleted successfully",
+        });
+      } catch (error) {
+        reject(error);
+      }
+    }),
 };

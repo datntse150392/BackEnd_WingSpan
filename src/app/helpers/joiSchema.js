@@ -18,6 +18,10 @@ const addToCartJoiSchema = Joi.object({
   courseId: Joi.string().required(),
 });
 
+const deleteCartJoiSchema = Joi.object({
+  cartId: Joi.string().required(),
+});
+
 const transactionJoiSchema = Joi.object({
   cartId: Joi.string().required(),
   amount: Joi.number().required(),
@@ -32,5 +36,6 @@ module.exports = {
   userJoiSchemaForSignUp,
   cartJoiSchema,
   addToCartJoiSchema,
+  deleteCartJoiSchema,
   transactionJoiSchema,
 };
