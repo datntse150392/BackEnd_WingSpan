@@ -162,6 +162,10 @@ Mô tả chi tiết về Màn Hình Cart Page.
           <img src="https://rxjs.dev/generated/images/marketing/home/Rx_Logo-512-512.png" width="48" height="48" alt="RxJS" />
         <br />RxJS
       </td>
+      <td align="center" width="96">
+          <img src="https://miro.medium.com/v2/1*QOx_tPV5wJnhTzAGhfIiLA.png" width="48" height="48" alt="Postman" />
+        <br />Postman
+      </td>
     </tr>
 
 </table>
