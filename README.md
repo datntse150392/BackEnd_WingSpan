@@ -4,31 +4,6 @@
 
 # Yêu Cầu Môi Trường để Chạy Dự Án | Setup Instructions
 
-1. **Node.js and npm:**
-
-   - Cài đặt Node.js phiên bản 18 trở lên. npm sẽ được cài đặt kèm theo. | Install Node.js version 18 or above. npm will be installed along with it.
-
-2. **Angular CLI:**
-
-   - Cài đặt Angular CLI bằng lệnh sau: | Install Angular CLI using the following command:
-     ```bash
-     npm install -g @angular/cli@latest
-     ```
-
-3. **Cài Đặt Dependencies Dự Án: | Install Project Dependencies:**
-
-   - Trong thư mục gốc của dự án, chạy lệnh sau để cài đặt các dependencies | In the root directory of the project, run the following command to install project dependencies:
-     ```bash
-     npm install
-     ```
-
-4. **Chạy Dự Án | Run the Project:**
-   - Chạy lệnh sau để khởi động dự án: | Execute the following command to start the project:
-     ```bash
-     ng serve
-     ```
-   - Access the application at `http://localhost:4200/` in your web browser.
-
 ---
 
 ## 1. Giới Thiệu | Introduction
