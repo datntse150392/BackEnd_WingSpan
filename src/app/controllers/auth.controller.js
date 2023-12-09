@@ -1,5 +1,5 @@
 const userSchema = require("../models/user.model");
-const servies = require("../services/auth");
+const authsService = require("../services/auth");
 const {
   userJoiSchema,
   userJoiSchemaForSignUp,
@@ -10,7 +10,7 @@ const {
 } = require("../middlewares/handleError");
 module.exports = {
   /**
-   *  Đăng nhập tài khoản vào hệ thống
+   * Log in a user to the system.
    */
   signIn: async (req, res) => {
     try {
@@ -20,7 +20,7 @@ module.exports = {
         return badRequest(error, res);
       }
 
-      const response = await servies.signIn(req.body);
+      const response = await authsService.signIn(req.body);
       return res.status(200).json(response);
     } catch (error) {
       res.status(500).json({
@@ -64,7 +64,7 @@ module.exports = {
     const { username, password } = req.body;
 
     try {
-      // *Tìm người dùng trong MongoDB, chọn không lấy trường password
+      // Find the user in MongoDB, excluding the password field
       const user = await userSchema.findOne(
         { username, password },
         { password: 0 }
@@ -97,23 +97,11 @@ module.exports = {
     const { email } = req.body;
 
     try {
-      // *Kiểm tra xem tên người dùng đã tồn tại chưa
+      // Check if the user with the given email exists
       const existingUser = await userSchema.findOne({ email });
-      if (!email) {
-        return res.status(400).json({
-          status: 400,
-          message: "Email is required",
-        });
-      }
-      if (existingUser) {
-        return res.status(200).json({
-          status: 200,
-          message: "Founded",
-        });
-      }
-      res.status(200).json({
+      return res.status(200).json({
         status: 200,
-        message: "Not Found",
+        message: existingUser ? "Founded" : "Not Found",
       });
     } catch (error) {
       res.status(500).json({ status: 500, message: error.message });
