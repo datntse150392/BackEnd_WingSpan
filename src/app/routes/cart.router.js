@@ -5,7 +5,7 @@ const { verifyToken } = require("../middlewares/verifyToken");
 const {
   getCartItems,
   addToCart,
-  deleteCart,
+  deleteCartItem,
 } = require("../controllers/cart.controller");
 
 /**
@@ -18,5 +18,5 @@ const {
 router.use(verifyToken);
 router.post("", getCartItems);
 router.post("/addToCart", addToCart);
-router.delete("/deleteCart", deleteCart);
+router.delete("/deleteCartItem", deleteCartItem);
 module.exports = router;
