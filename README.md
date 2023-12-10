@@ -1,25 +1,42 @@
 # <a href="https://wingspan-dev-course.vercel.app/">WingSpan | Web Learning Course</a>
 
-# Yêu Cầu Môi Trường để Chạy Dự Án | Setup Instructions
+---
 
-- 1. Clone the Repository
+# Backend Setup | Setup Instructions
 
-git clone [repository_url]
-cd wingSpan-backend
+Follow these steps to set up and run the WingSpan backend on your local machine:
 
-- 2. Install Dependencies
+## 1. **Node.js and npm:**
 
-npm install
+- Install Node.js version 18 or above. npm will be installed along with it.
 
-- 3. Configure Environment Variables
+## 2. **Clone the Repository:**
 
-echo "PORT=3000" > .env
-echo "MONGO_URI=your_mongo_db_connection_string" >> .env
-echo "SECRET_KEY=your_secret_key_for_authentication" >> .env
+- Use the following commands to clone the backend repository and navigate to the project directory:
+  ```bash
+  git clone [repository_url]
+  cd wingSpan-backend
+  ```
+- Replace `[repository_url]` with the URL of the Git repository.
 
-# 4. Run the Backend Locally
+## 3. **Install Dependencies:**
 
-## npm start
+- Run the following command in the project's root directory to install backend dependencies:
+  ```bash
+  npm install
+  ```
+
+## 4. **Configure Environment Variables:**
+
+- Create a `.env` file in the root directory and add the following configuration:
+  ```plaintext
+  PORT=3000
+  MONGO_URI=your_mongo_db_connection_string
+  SECRET_KEY=your_secret_key_for_authentication
+  ```
+- Replace `your_mongo_db_connection_string` with the connection string for your MongoDB database, and `your_secret_key_for_authentication` with a secure secret key for authentication.
+
+---
 
 ## 1. Giới Thiệu | Introduction
 
