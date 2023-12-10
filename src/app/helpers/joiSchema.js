@@ -20,6 +20,7 @@ const addToCartJoiSchema = Joi.object({
 
 const deleteCartJoiSchema = Joi.object({
   cartId: Joi.string().required(),
+  itemId: Joi.string().required(),
 });
 
 const transactionJoiSchema = Joi.object({

@@ -53,14 +53,14 @@ module.exports = {
   /**
    * Logic code: Delete cart by cartId
    */
-  deleteCart: async (req, res) => {
+  deleteCartItem: async (req, res) => {
     try {
       const { error } = deleteCartJoiSchema.validate(req.body);
       if (error) {
         return badRequest(error, res);
       }
 
-      const response = await cartService.deleteCart(req.body);
+      const response = await cartService.deleteCartItem(req.body);
       return res.status(200).json(response);
     } catch (error) {
       console.log(error);

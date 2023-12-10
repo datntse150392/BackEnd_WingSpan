@@ -86,13 +86,13 @@ module.exports = {
     }),
 
   /**
-   *  Logic server: Delete Cart by CartId
+   *  Logic server: Delete Item Cart by itemID
    */
-  deleteCart: ({ cartId }) =>
+  deleteCartItem: ({ cartId, itemId }) =>
     new Promise(async (resolve, reject) => {
       try {
         // Find Cart by cart Id
-        const cart = await cartSchema.findByIdAndDelete(cartId);
+        const cart = await cartSchema.findById(cartId);
         if (!cart) {
           resolve({
             status: 404,
@@ -100,9 +100,22 @@ module.exports = {
           });
         }
 
+        // Check if the item exists in the cart
+        if (!cart.items.find((item) => item._id == itemId)) {
+          resolve({
+            status: 404,
+            message: "Not Found: Item not in the Cart",
+          });
+          // Remove item from the cart by filtering
+        }
+        cart.items = cart.items.filter((item) => item.id === itemId);
+        --cart.count;
+
+        // Save the updated cart
+        await cart.save();
         resolve({
           status: 200,
-          message: "Cart deleted successfully",
+          message: "Item in the cart deleted successfully",
         });
       } catch (error) {
         reject(error);
