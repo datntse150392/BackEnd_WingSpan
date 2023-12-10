@@ -1,10 +1,25 @@
 # <a href="https://wingspan-dev-course.vercel.app/">WingSpan | Web Learning Course</a>
 
----
-
 # Yêu Cầu Môi Trường để Chạy Dự Án | Setup Instructions
 
----
+- 1. Clone the Repository
+
+git clone [repository_url]
+cd wingSpan-backend
+
+- 2. Install Dependencies
+
+npm install
+
+- 3. Configure Environment Variables
+
+echo "PORT=3000" > .env
+echo "MONGO_URI=your_mongo_db_connection_string" >> .env
+echo "SECRET_KEY=your_secret_key_for_authentication" >> .env
+
+# 4. Run the Backend Locally
+
+## npm start
 
 ## 1. Giới Thiệu | Introduction
 
@@ -61,7 +76,9 @@ Mô tả chi tiết về Màn Hình Video Bài Học.
 Mô tả chi tiết về Màn Hình Cart Page.
 
 ---
-## 3. Cấu trúc của dự án | Project Structure 
+
+## 3. Cấu trúc của dự án | Project Structure
+
 ---
 
 ## 4. Tính Năng Chính | Key Features
