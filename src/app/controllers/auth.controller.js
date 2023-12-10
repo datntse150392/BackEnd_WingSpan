@@ -51,12 +51,14 @@ module.exports = {
       if (user) {
         return badRequest("The user is contained in the system", res);
       } else {
-        const response = await servies.signUp(req.body);
+        const response = await authsService.signUp(req.body);
         return res.status(200).json(response);
       }
     } catch (error) {
-      console.log(error);
-      return interalServerError(res);
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
     }
   },
 
