@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { TokenExpiredError } = require("jsonwebtoken"); // Add this line to import TokenExpiredError
 const { notAuth } = require("../middlewares/handleError");
 module.exports = {
   verifyToken: (req, res, next) => {
