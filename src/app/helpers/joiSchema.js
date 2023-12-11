@@ -24,6 +24,10 @@ const deleteCartJoiSchema = Joi.object({
 });
 
 const codeAddSchema = Joi.object({});
+const codeActiveSchema = Joi.object({
+  userId: Joi.string().required(),
+  code: Joi.string().required(),
+});
 
 const transactionJoiSchema = Joi.object({
   cartId: Joi.string().required(),
@@ -41,4 +45,5 @@ module.exports = {
   addToCartJoiSchema,
   deleteCartJoiSchema,
   transactionJoiSchema,
+  codeActiveSchema,
 };
