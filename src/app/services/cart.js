@@ -101,16 +101,18 @@ module.exports = {
         }
 
         // Check if the item exists in the cart
-        if (!cart.items.find((item) => item._id == itemId)) {
+        if (!cart.items.find((item) => String(item._id) === String(itemId))) {
           resolve({
             status: 404,
             message: "Not Found: Item not in the Cart",
           });
           // Remove item from the cart by filtering
+        } else {
+          cart.items = cart.items.filter(
+            (item) => String(item._id) !== String(itemId)
+          );
+          --cart.count;
         }
-        cart.items = cart.items.filter((item) => item.id === itemId);
-        --cart.count;
-
         // Save the updated cart
         await cart.save();
         resolve({
