@@ -7,6 +7,7 @@ const userJoiSchema = Joi.object({
 const userJoiSchemaForSignUp = Joi.object({
   email: Joi.string().email().required(),
   fullName: Joi.string().required(),
+  profileImage: Joi.string().required(),
 });
 
 const cartJoiSchema = Joi.object({
