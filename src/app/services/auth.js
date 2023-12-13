@@ -24,6 +24,7 @@ module.exports = {
                   profileImage: response.profileImage,
                   dateOfBirth: response.dateOfBirth,
                   createAt: response.createAt,
+                  enrolledCourses: response.enrolledCourses,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
@@ -69,6 +70,7 @@ module.exports = {
                   profileImage: response.profileImage,
                   dateOfBirth: response.dateOfBirth,
                   createAt: response.createAt,
+                  enrolledCourses: response.enrolledCourses,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
