@@ -23,6 +23,7 @@ module.exports = {
                   fullName: response.fullName,
                   profileImage: response.profileImage,
                   dateOfBirth: response.dateOfBirth,
+                  createAt: response.createAt,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
@@ -54,6 +55,7 @@ module.exports = {
           profileImage: profileImage,
           dateOfBirth: "",
           enrolledCourses: [],
+          createAt: new Date().toDateString(),
         });
 
         const response = await newUser.save();
@@ -66,6 +68,7 @@ module.exports = {
                   fullName: response.fullName,
                   profileImage: response.profileImage,
                   dateOfBirth: response.dateOfBirth,
+                  createAt: response.createAt,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
