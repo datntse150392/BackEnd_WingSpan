@@ -18,6 +18,6 @@ router.post(
   "/processPaymentAndSaveTransaction",
   processPaymentAndSaveTransaction
 );
-router.get("/getTransaction", getTransaction);
+router.post("/getTransaction", getTransaction);
 
 module.exports = router;
