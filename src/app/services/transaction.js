@@ -1,4 +1,5 @@
 const transactionSchema = require("../models/transaction.model");
+const userSchema = require("../models/user.model");
 const cartSchema = require("../models/cart.model");
 const codeSchema = require("../models/code.model");
 
@@ -177,6 +178,53 @@ module.exports = {
         // Log: Error during payment process
         console.error(`Error processing payment: ${error.message}`);
 
+        reject({
+          status: 500,
+          message: error.message,
+        });
+      }
+    }),
+
+  // Function to retrieve transaction by userId
+  getTransaction: (userId) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        // Logic to check user is exist or not
+        const user = await userSchema.findById(userId);
+        if (!user) {
+          // Log: User not found
+          console.error(`User not found for userId: ${userId}`);
+          resolve({
+            status: 404,
+            message: "Not Found User",
+            data: null,
+          });
+        }
+
+        // Log: Retrieving transaction by userId
+        console.log(`Retrieving transaction by userId: ${userId}`);
+
+        // Log: Handle logic to retrieve transaction by userId
+        const transaction = await transactionSchema.find({ userId: userId });
+        if (!transaction) {
+          // Log: Transaction not found
+          console.error(`Transaction not found for userId: ${userId}`);
+
+          resolve({
+            status: 404,
+            message: "Not Found Transaction",
+            data: null,
+          });
+        }
+
+        // Log: Transaction found successfully
+        console.log("Transaction found successfully");
+        resolve({
+          status: 200,
+          message: "Transaction found successfully",
+          data: { transaction },
+        });
+      } catch (error) {
         reject({
           status: 500,
           message: error.message,
