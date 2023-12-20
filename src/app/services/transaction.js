@@ -231,4 +231,32 @@ module.exports = {
         });
       }
     }),
+
+  // Function to retrieve detail transaction by transactionId
+  getDetailTransaction: (transactionId) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        const transaction = await transactionSchema.findById(transactionId);
+        if (!transaction) {
+          console.error(
+            `Transaction not found for transactionId: ${transactionId}`
+          );
+          resolve({
+            status: 404,
+            message: `Transaction not found for transactionId: ${transactionId}`,
+            data: null,
+          });
+        }
+        resolve({
+          status: 200,
+          message: "Transaction found successfully",
+          data: { transaction },
+        });
+      } catch (error) {
+        reject({
+          status: 500,
+          message: error.message,
+        });
+      }
+    }),
 };

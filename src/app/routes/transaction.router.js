@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   processPaymentAndSaveTransaction,
   getTransaction,
+  getDetailTransaction,
 } = require("../controllers/transaction.controller");
 const { verifyToken } = require("../middlewares/verifyToken");
 
@@ -19,5 +20,6 @@ router.post(
   processPaymentAndSaveTransaction
 );
 router.post("/getTransaction", getTransaction);
+router.post("/getDetailTransaction", getDetailTransaction);
 
 module.exports = router;

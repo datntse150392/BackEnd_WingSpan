@@ -46,4 +46,26 @@ module.exports = {
       return interalServerError(error);
     }
   },
+
+  /**
+   * Function to handle retrieving detail transaction by transactionId
+   */
+  getDetailTransaction: async (req, res) => {
+    try {
+      const { transactionId } = req.body;
+      if (!transactionId) {
+        return res.status(404).json({
+          message: "Transaction is required",
+        });
+      }
+
+      const response = await transactionService.getDetailTransaction(
+        transactionId
+      );
+
+      return res.status(200).json(response);
+    } catch (error) {
+      return interalServerError(error);
+    }
+  },
 };
