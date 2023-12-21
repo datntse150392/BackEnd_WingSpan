@@ -19,7 +19,7 @@ const transactionSchema = new mongoose.Schema({
   count: {
     type: Number,
   },
-  amout: {
+  amount: {
     type: Number,
   },
   payer: {
