@@ -38,6 +38,7 @@ const transactionJoiSchema = Joi.object({
   transactionType: Joi.string().required(),
   status: Joi.string().required(),
   customerEmail: Joi.string().email().required(),
+  voucherId: Joi.string(),
 });
 
 module.exports = {

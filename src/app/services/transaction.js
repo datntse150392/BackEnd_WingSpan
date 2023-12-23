@@ -2,6 +2,7 @@ const transactionSchema = require("../models/transaction.model");
 const userSchema = require("../models/user.model");
 const cartSchema = require("../models/cart.model");
 const codeSchema = require("../models/code.model");
+const voucherSchema = require("../models/voucher.model");
 
 const nodemailer = require("nodemailer");
 // Genarate code to active course
@@ -96,6 +97,7 @@ module.exports = {
     transactionType,
     status,
     customerEmail, // Add customer email to the function parameters
+    voucherId, // Add voucherId to the function parameters
   }) =>
     new Promise(async (resolve, reject) => {
       try {
@@ -115,18 +117,40 @@ module.exports = {
           });
         }
 
+        // Check voucher is exsit
+        const voucher = await voucherSchema.findById({ _id: voucherId });
+        // Get current time
+        const currentTime = new Date().getTime();
+        if (
+          voucher &&
+          voucher.usedCount === voucher.maxUses &&
+          currentTime - voucher.expirationDate <= 0
+        ) {
+          resolve({
+            status: 400,
+            message: "Voucher has expired or used count maximum",
+            data: null,
+          });
+        } else if (voucher.usedCount < voucher.maxUses) {
+          voucher.usedCount += 1;
+        }
+
         // Create new transaction with new data form request
         const newTransaction = new transactionSchema({
           _id: uuidv4(),
           userId: cartItem.userId,
           items: cartItem.items,
           count: cartItem.count,
-          amount: amount,
+          amount: voucher ? amount - voucher.discount : amount,
           payer: payer,
           transactionType: transactionType,
           transactionDate: new Date().toDateString(),
           status: status,
+          voucher: voucher ? voucher : null,
         });
+
+        // Log: Saving the voucher
+        await voucher.save();
 
         // Generate an activation code (you can use a library like `crypto` or any other method)
         const activationCodes = [];

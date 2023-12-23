@@ -35,6 +35,9 @@ const transactionSchema = new mongoose.Schema({
   status: {
     type: String,
   },
+  voucher: {
+    type: Object,
+  },
 });
 
 module.exports = mongoose.model("transaction", transactionSchema);
