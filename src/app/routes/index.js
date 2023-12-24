@@ -6,6 +6,7 @@ const cartRouter = require("./cart.router");
 const transactionRouter = require("./transaction.router");
 const codeRouter = require("./code.router");
 const voucherRouter = require("./voucher.router");
+const newFeedRouter = require("./newFeed.router");
 
 const initRoutes = (app) => {
   app.use("/api/user", userRouter);
@@ -16,6 +17,7 @@ const initRoutes = (app) => {
   app.use("/api/transaction", transactionRouter);
   app.use("/api/code", codeRouter);
   app.use("/api/voucher", voucherRouter);
+  app.use("/api/newFeed", newFeedRouter);
 };
 
 module.exports = initRoutes;
