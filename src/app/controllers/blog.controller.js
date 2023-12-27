@@ -14,8 +14,10 @@ module.exports = {
       const response = await blogService.getBlogs();
       return res.status(200).json(response);
     } catch (error) {
-      console.log(error);
-      return interalServerError();
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
     }
   },
 
@@ -34,8 +36,10 @@ module.exports = {
       const response = await blogService.createBlog(req.body);
       return res.status(200).json(response);
     } catch (error) {
-      console.log(error);
-      return interalServerError();
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
     }
   },
 };
