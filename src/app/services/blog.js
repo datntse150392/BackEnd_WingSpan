@@ -27,6 +27,7 @@ module.exports = {
     new Promise(async (resolve, reject) => {
       try {
         const blog = new blogSchema({
+          _id: uuidv4(),
           title,
           content,
           author,
