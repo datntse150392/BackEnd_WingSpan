@@ -11,5 +11,6 @@ router.get("/getBlogs", getBlogs);
 /**
  * Private Route
  */
-// router.use(verifyToken);
+router.use(verifyToken);
+router.post("/createBlog", createBlog);
 module.exports = router;
