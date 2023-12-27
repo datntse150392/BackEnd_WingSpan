@@ -41,6 +41,12 @@ const transactionJoiSchema = Joi.object({
   voucherId: Joi.string(),
 });
 
+const blogJoiSchema = Joi.object({
+  title: Joi.string().required(),
+  content: Joi.string().required(),
+  author: Joi.object().required(),
+});
+
 module.exports = {
   userJoiSchema,
   userJoiSchemaForSignUp,
@@ -49,4 +55,5 @@ module.exports = {
   deleteCartJoiSchema,
   transactionJoiSchema,
   codeActiveSchema,
+  blogJoiSchema,
 };
