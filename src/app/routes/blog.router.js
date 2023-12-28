@@ -2,12 +2,17 @@ const express = require("express");
 const router = express.Router();
 const { verifyToken } = require("../middlewares/verifyToken");
 
-const { createBlog, getBlogs } = require("../controllers/blog.controller");
+const {
+  createBlog,
+  getBlogs,
+  getBlogById,
+} = require("../controllers/blog.controller");
 
 /**
  * Public Route
  */
 router.get("/getBlogs", getBlogs);
+router.post("/createBlogById", getBlogById);
 /**
  * Private Route
  */

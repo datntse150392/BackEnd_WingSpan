@@ -42,4 +42,28 @@ module.exports = {
       });
     }
   },
+
+  /**
+   * Logic code - Get Deail Blog
+   */
+  getBlogById: async (req, res) => {
+    try {
+      const { blogId } = req.body;
+      console.log(blogId);
+      if (!blogId) {
+        return res.status(404).json({
+          status: 404,
+          message: "Not Found Blog Id",
+          data: null,
+        });
+      }
+      const response = await blogService.getBlogById(blogId);
+      return res.status(200).json(response);
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
+    }
+  },
 };
