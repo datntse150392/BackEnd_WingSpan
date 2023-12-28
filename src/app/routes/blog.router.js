@@ -12,7 +12,7 @@ const {
  * Public Route
  */
 router.get("/getBlogs", getBlogs);
-router.post("/createBlogById", getBlogById);
+router.post("/getBlogById", getBlogById);
 /**
  * Private Route
  */
