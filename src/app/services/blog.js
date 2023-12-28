@@ -42,4 +42,28 @@ module.exports = {
         reject(error);
       }
     }),
+
+  /**
+   * Serivce Func Get Detail Blog By Id
+   */
+  getBlogById: async (blogId) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        const blog = await blogSchema.findById(blogId);
+        if (!blog) {
+          resolve({
+            status: 404,
+            message: "Not Found",
+            data: null,
+          });
+        }
+        resolve({
+          status: 200,
+          message: "Get blog successful",
+          data: { blog },
+        });
+      } catch (error) {
+        reject(error);
+      }
+    }),
 };
