@@ -24,6 +24,22 @@ const userSchema = new mongoose.Schema({
   createAt: {
     type: String,
   },
+  is_admin: {
+    type: Boolean,
+    default: false,
+  },
+  is_teacher: {
+    type: Boolean,
+    default: false,
+  },
+  is_comment_blocked: {
+    type: Boolean,
+    default: false,
+  },
+  is_blocked: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("user", userSchema);
