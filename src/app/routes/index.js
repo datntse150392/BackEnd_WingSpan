@@ -8,6 +8,7 @@ const codeRouter = require("./code.router");
 const voucherRouter = require("./voucher.router");
 const newFeedRouter = require("./newFeed.router");
 const blogRouter = require("./blog.router");
+const videoRouter = require("./video.router");
 
 const initRoutes = (app) => {
   app.use("/api/user", userRouter);
@@ -20,6 +21,7 @@ const initRoutes = (app) => {
   app.use("/api/voucher", voucherRouter);
   app.use("/api/newFeed", newFeedRouter);
   app.use("/api/blog", blogRouter);
+  app.use("/api/video", videoRouter);
 };
 
 module.exports = initRoutes;

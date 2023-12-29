@@ -24,7 +24,7 @@ module.exports = {
     });
   },
 
-  interalServerError: (err) => {
+  interalServerError: (err, res) => {
     const error = createError.InternalServerError(err);
     return res.status(error.status).json({
       status: error.status,
