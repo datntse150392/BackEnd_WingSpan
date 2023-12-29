@@ -25,6 +25,10 @@ module.exports = {
                   dateOfBirth: response.dateOfBirth,
                   createAt: response.createAt,
                   enrolledCourses: response.enrolledCourses,
+                  is_admin: response.is_admin,
+                  is_teacher: response.is_teacher,
+                  is_comment_blocked: response.is_comment_blocked,
+                  is_blocked: response.is_blocked,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
@@ -71,6 +75,10 @@ module.exports = {
                   dateOfBirth: response.dateOfBirth,
                   createAt: response.createAt,
                   enrolledCourses: response.enrolledCourses,
+                  is_admin: response.is_admin,
+                  is_teacher: response.is_teacher,
+                  is_comment_blocked: response.is_comment_blocked,
+                  is_blocked: response.is_blocked,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
