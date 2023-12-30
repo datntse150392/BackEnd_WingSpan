@@ -6,7 +6,7 @@ const {
   getCartItems,
   addToCart,
   deleteCartItem,
-} = require("../controllers/cart.controller");
+} = require("../controllers/cart-controller");
 
 /**
  * Public Router

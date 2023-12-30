@@ -1,4 +1,4 @@
-const voucherSchema = require("../models/voucher.model");
+const voucherSchema = require("../../models/voucher-model");
 
 module.exports = {
   /**

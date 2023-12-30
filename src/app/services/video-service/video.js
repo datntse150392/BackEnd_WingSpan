@@ -1,4 +1,4 @@
-const videoSchema = require("../models/video.model");
+const videoSchema = require("../../models/video-model");
 
 module.exports = {
   /**

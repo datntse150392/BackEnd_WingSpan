@@ -1,4 +1,4 @@
-const newFeedSchema = require("../models/newFeed.model");
+const newFeedSchema = require("../../models/newFeed-model");
 // UUID4
 const { v4: uuidv4 } = require("uuid");
 

@@ -1,4 +1,4 @@
-const videoService = require("../services/video");
+const videoService = require("../services/video-service/video");
 const {
   badRequest,
   interalServerError,

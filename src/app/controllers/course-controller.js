@@ -1,5 +1,5 @@
-const courseSchema = require("../models/course.model");
-const userSchema = require("../models/user.model");
+const courseSchema = require("../models/course-model");
+const userSchema = require("../models/user-model");
 module.exports = {
   /**
    *  Get all Courses

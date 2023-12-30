@@ -1,5 +1,5 @@
-const cartSchema = require("../models/cart.model");
-const courseSchema = require("../models/course.model");
+const cartSchema = require("../../models/cart-model");
+const courseSchema = require("../../models/course-model");
 // UUID4
 const { v4: uuidv4 } = require("uuid");
 

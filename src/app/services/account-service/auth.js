@@ -1,4 +1,4 @@
-const userSchema = require("../models/user.model");
+const userSchema = require("../../models/user-model");
 
 // json web token: Giả sử như phía sever cần một số thông tin khi BE xử lý, ví dụ khi có một user đăng kí tài khoản mới thì bên FE muốn nhận 1 số thông tin như email để có thể phân quyền...
 const jwt = require("jsonwebtoken");

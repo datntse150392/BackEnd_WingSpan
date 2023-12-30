@@ -1,4 +1,4 @@
-const newFeedService = require("../services/newFeed");
+const newFeedService = require("../services/newFeed-service/newFeed");
 const { badRequest } = require("../middlewares/handleError");
 
 module.exports = {

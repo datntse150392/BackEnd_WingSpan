@@ -1,4 +1,4 @@
-const codeService = require("../services/code");
+const codeService = require("../services/code-service/code");
 const { codeActiveSchema } = require("../helpers/joiSchema");
 const { badRequest } = require("../middlewares/handleError");
 

@@ -1,4 +1,4 @@
-const cartService = require("../services/cart");
+const cartService = require("../services/cart-service/cart");
 const {
   cartJoiSchema,
   addToCartJoiSchema,

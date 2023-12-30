@@ -1,4 +1,4 @@
-const transactionService = require("../services/transaction");
+const transactionService = require("../services/transaction-service/transaction");
 const { transactionJoiSchema } = require("../helpers/joiSchema");
 const {
   badRequest,

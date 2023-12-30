@@ -1,4 +1,4 @@
-const blogSchema = require("../models/blog.model");
+const blogSchema = require("../../models/blog-model");
 
 // UUID4
 const { v4: uuidv4 } = require("uuid");

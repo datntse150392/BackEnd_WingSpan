@@ -1,4 +1,4 @@
-const blogService = require("../services/blog");
+const blogService = require("../services/blog-service/blog");
 const { blogJoiSchema } = require("../helpers/joiSchema");
 const {
   badRequest,

@@ -6,7 +6,7 @@ const {
   getUserbyEmail,
   updateInfo,
   getUserbyUserId,
-} = require("../controllers/users.controller");
+} = require("../controllers/users-controller");
 const { verifyToken } = require("../middlewares/verifyToken");
 
 /*
