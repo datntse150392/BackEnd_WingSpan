@@ -1,4 +1,4 @@
-const userSchema = require("../models/user.model");
+const userSchema = require("../../models/user-model");
 
 module.exports = {
   getUserByUserId: ({ _id }) =>

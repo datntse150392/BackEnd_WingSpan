@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getAllVouchers } = require("../controllers/voucher.controller");
+const { getAllVouchers } = require("../controllers/voucher-controller");
 const { verifyToken } = require("../middlewares/verifyToken");
 
 /*

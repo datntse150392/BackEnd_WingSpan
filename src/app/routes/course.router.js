@@ -6,7 +6,7 @@ const {
   getCourses,
   getCourseById,
   registerCourse,
-} = require("../controllers/course.controller");
+} = require("../controllers/course-controller");
 
 /**
  * Public Router

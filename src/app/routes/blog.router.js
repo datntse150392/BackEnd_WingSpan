@@ -6,7 +6,7 @@ const {
   createBlog,
   getBlogs,
   getBlogById,
-} = require("../controllers/blog.controller");
+} = require("../controllers/blog-controller");
 
 /**
  * Public Route

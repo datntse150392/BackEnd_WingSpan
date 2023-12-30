@@ -1,5 +1,5 @@
-const userSchema = require("../models/user.model");
-const authsService = require("../services/auth");
+const userSchema = require("../models/user-model");
+const authsService = require("../services/account-service/auth");
 const {
   userJoiSchema,
   userJoiSchemaForSignUp,

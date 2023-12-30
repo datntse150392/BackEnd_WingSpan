@@ -1,6 +1,6 @@
-const codeSchema = require("../models/code.model");
-const userSchema = require("../models/user.model");
-const courseSchema = require("../models/course.model");
+const codeSchema = require("../../models/code-model");
+const userSchema = require("../../models/user-model");
+const courseSchema = require("../../models/course-model");
 
 module.exports = {
   activeCourse: async ({ code, userId }) =>

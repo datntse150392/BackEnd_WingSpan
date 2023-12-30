@@ -1,5 +1,5 @@
-const userModel = require("../models/user.model");
-const services = require("../services/user");
+const userModel = require("../models/user-model");
+const services = require("../services/account-service/user");
 const { interalServerError } = require("../middlewares/handleError");
 module.exports = {
   /**

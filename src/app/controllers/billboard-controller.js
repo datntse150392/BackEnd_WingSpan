@@ -1,4 +1,4 @@
-const billboardSchema = require("../models/billboard.model");
+const billboardSchema = require("../models/billboard-model");
 module.exports = {
   /**
    *  Lấy tất cả danh sách khóa học

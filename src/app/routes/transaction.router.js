@@ -4,7 +4,7 @@ const {
   processPaymentAndSaveTransaction,
   getTransaction,
   getDetailTransaction,
-} = require("../controllers/transaction.controller");
+} = require("../controllers/transaction-controller");
 const { verifyToken } = require("../middlewares/verifyToken");
 
 /*

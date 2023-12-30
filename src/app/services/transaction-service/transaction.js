@@ -1,8 +1,8 @@
-const transactionSchema = require("../models/transaction.model");
-const userSchema = require("../models/user.model");
-const cartSchema = require("../models/cart.model");
-const codeSchema = require("../models/code.model");
-const voucherSchema = require("../models/voucher.model");
+const transactionSchema = require("../../models/transaction-model");
+const userSchema = require("../../models/user-model");
+const cartSchema = require("../../models/cart-model");
+const codeSchema = require("../../models/code-model");
+const voucherSchema = require("../../models/voucher-model");
 
 const nodemailer = require("nodemailer");
 // Genarate code to active course

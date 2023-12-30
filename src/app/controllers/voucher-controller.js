@@ -1,4 +1,4 @@
-const voucherService = require("../services/voucher");
+const voucherService = require("../services/voucher-service/voucher");
 const { interalServerError } = require("../middlewares/handleError");
 
 module.exports = {
