@@ -11,10 +11,10 @@ const app = express();
 
 /**
  * Vì do sử dụng dịch vụ miễn phí từ render
- * nên phải config thêm cron để máy chủ được chạy 10 phút 1 lần
+ * nên phải config thêm cron để máy chủ được chạy 1 phút 1 lần
  */
-const job = new CronJob("*/10 * * * *", function () {
-  console.log("The server will be activated every 10 minutes");
+const job = new CronJob("* * * * *", function () {
+  console.log("The server will be activated every 1 minutes");
 });
 // Don't forget to start the job!
 job.start();
