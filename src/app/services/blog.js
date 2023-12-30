@@ -7,16 +7,50 @@ module.exports = {
   /**
    * Service Func Get All Blog
    */
-  getBlogs: async () =>
+  getBlogs: async ({ page }) =>
     new Promise(async (resolve, reject) => {
       try {
-        const blogs = await blogSchema.find();
+        // Limit number of blog entries per page
+        const limit = 2;
+        const offset = !page || +page <= 1 ? 0 : +page - 1;
+        // Calculate the number of documents to skip
+        const skip = (page - 1) * limit;
+
+        // Count the total number if blogs to assits with front-end pagination
+        const total = await blogSchema.countDocuments();
+
+        // Check if current page > total || < 0
+        if (page > ~~(total / limit) || page <= 0) {
+          resolve({
+            status: 400,
+            message: "Page invalid",
+            data: null,
+          });
+        }
+
+        // Find the blogs, apply sorting by date, skip and limit for pagination
+        const blogs = await blogSchema
+          .find()
+          .sort({ createdAt: -1 })
+          .skip(+skip)
+          .limit(limit);
+
         resolve({
           status: 200,
+          message: "Blogs retrieved successfully",
           data: { blogs },
+          pageInfo: {
+            currentPage: page,
+            totalPages: ~~(total / limit),
+            totalBlogs: total,
+          },
         });
       } catch (error) {
-        reject(error);
+        reject({
+          status: 500,
+          message: "Error retrieving blogs",
+          error: error.message,
+        });
       }
     }),
 
@@ -32,7 +66,6 @@ module.exports = {
           content,
           author,
         });
-
         await blog.save();
         resolve({
           status: 200,
