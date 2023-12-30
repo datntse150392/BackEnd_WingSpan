@@ -11,8 +11,7 @@ module.exports = {
     new Promise(async (resolve, reject) => {
       try {
         // Limit number of blog entries per page
-        const limit = 2;
-        const offset = !page || +page <= 1 ? 0 : +page - 1;
+        const limit = 5;
         // Calculate the number of documents to skip
         const skip = (page - 1) * limit;
 
