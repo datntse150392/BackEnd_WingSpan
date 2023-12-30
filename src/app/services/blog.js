@@ -19,7 +19,7 @@ module.exports = {
         const total = await blogSchema.countDocuments();
 
         // Check if current page > total || < 0
-        if (page > ~~(total / limit) || page <= 0) {
+        if (page > Math.ceil(total / limit) || page <= 0) {
           resolve({
             status: 400,
             message: "Page invalid",
@@ -40,7 +40,7 @@ module.exports = {
           data: { blogs },
           pageInfo: {
             currentPage: page,
-            totalPages: ~~(total / limit),
+            totalPages: Math.ceil(total / limit),
             totalBlogs: total,
           },
         });
