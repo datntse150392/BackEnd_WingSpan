@@ -33,6 +33,27 @@ const blogSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  is_approved: {
+    type: Boolean,
+    default: false,
+  },
+  is_bookmark: {
+    type: Boolean,
+    default: false,
+  },
+  // Admin will seting 3 field below
+  thumbnail: {
+    type: String,
+    default: null,
+  },
+  min_read: {
+    type: Number,
+    default: 0,
+  },
+  tags: {
+    type: Array,
+    default: [],
+  },
 });
 
 module.exports = mongoose.model("blog", blogSchema);
