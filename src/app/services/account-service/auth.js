@@ -29,6 +29,7 @@ module.exports = {
                   is_teacher: response.is_teacher,
                   is_comment_blocked: response.is_comment_blocked,
                   is_blocked: response.is_blocked,
+                  room: response.room,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
@@ -79,6 +80,7 @@ module.exports = {
                   is_teacher: response.is_teacher,
                   is_comment_blocked: response.is_comment_blocked,
                   is_blocked: response.is_blocked,
+                  room: response.room,
                 },
                 process.env.JWT_SECRET,
                 { expiresIn: "5d" }
