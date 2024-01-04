@@ -5,15 +5,16 @@ const socketIo = require("socket.io");
 const http = require("http");
 const routers = require("./src/app/routes/index");
 const CronJob = require("cron").CronJob; // Assuming you're using the 'cron' package
-const chatRoomSchema = require("./src/app/models/chatRoom-model");
-const userSchema = require("./src/app/models/user-model");
 
 // Connect to database
 const connectDB = require("./src/app/configs/database");
 connectDB();
-const app = express();
 
+// Server Configuration
+const app = express();
 const server = http.createServer(app);
+
+// Socket.io Configuration
 const io = socketIo(server, {
   cors: {
     // origin: "http://localhost:4200", // Điều chỉnh lại cho phù hợp với client của bạn
@@ -23,16 +24,19 @@ const io = socketIo(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("A user connected");
+  console.log("A user connected", socket.id);
 
   socket.on("joinRoom", ({ roomId, userId }) => {
+    // Check if user is already connected to a room
     socket.join(roomId);
     console.log(`${userId} joined room ${roomId}`);
   });
 
   socket.on("sendMessage", async ({ roomId, userId, message }) => {
     const newMessage = { userId, timestamp: new Date(), message };
+    // Emit the message only once to the room
     io.to(roomId).emit("newMessage", newMessage);
+    console.log(`Message sent once to Room: ${roomId} by User: ${userId}`);
   });
 
   socket.on("disconnect", () => {
