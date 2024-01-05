@@ -32,11 +32,17 @@ io.on("connection", (socket) => {
     console.log(`${userId} joined room ${roomId}`);
   });
 
-  socket.on("sendMessage", async ({ roomId, userId, message }) => {
+  socket.on("sendMessage", ({ roomId, userId, message }) => {
     const newMessage = { userId, timestamp: new Date(), message };
     // Emit the message only once to the room
     io.to(roomId).emit("newMessage", newMessage);
     console.log(`Message sent once to Room: ${roomId} by User: ${userId}`);
+  });
+
+  socket.on("typing", ({ roomId, userId, message }) => {
+    console.log("typing");
+    const data = { roomId, userId, message };
+    io.to(roomId).emit("typing", data);
   });
 
   socket.on("disconnect", () => {
