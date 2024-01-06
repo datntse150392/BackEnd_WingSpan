@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { getAllVouchers } = require("../controllers/voucher-controller");
+const {
+  getAllVouchers,
+  getVoucherByCode,
+} = require("../controllers/voucher-controller");
 const { verifyToken } = require("../middlewares/verifyToken");
 
 /*
@@ -11,6 +14,7 @@ const { verifyToken } = require("../middlewares/verifyToken");
   PRIVATE ROUTES
 */
 router.use(verifyToken);
+router.post("/getVoucherByCode", getVoucherByCode);
 router.get("/getAllVouchers", getAllVouchers);
 
 module.exports = router;
