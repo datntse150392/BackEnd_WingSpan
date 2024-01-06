@@ -55,6 +55,14 @@ module.exports = {
         return { status: 404, message: "User not found" };
       }
 
+      if (message === "") {
+        return {
+          status: 404,
+          message: "Message is empty",
+          data: null,
+        };
+      }
+
       const new_message = { user, timestamp, message };
       chatRoom.messages.push(new_message);
       await chatRoom.save();
