@@ -1,9 +1,6 @@
 const blogService = require("../services/blog-service/blog");
 const { blogJoiSchema } = require("../helpers/joiSchema");
-const {
-  badRequest,
-  interalServerError,
-} = require("../middlewares/handleError");
+const { badRequest } = require("../middlewares/handleError");
 
 module.exports = {
   /**
@@ -58,6 +55,30 @@ module.exports = {
         });
       }
       const response = await blogService.getBlogById(blogId);
+      return res.status(200).json(response);
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
+      });
+    }
+  },
+
+  /**
+   * Logic Controller : Delete Blog By Blog-Id
+   */
+  deleteBlogByBlogId: async (req, res) => {
+    try {
+      const { blogId } = req.body;
+      if (!blogId) {
+        return res.status(404).json({
+          status: 404,
+          message: "Not Found Blog Id",
+          data: null,
+        });
+      }
+
+      const response = await blogService.deleteBlogById(req.body);
       return res.status(200).json(response);
     } catch (error) {
       return res.status(500).json({

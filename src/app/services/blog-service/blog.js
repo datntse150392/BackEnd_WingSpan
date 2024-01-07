@@ -98,4 +98,32 @@ module.exports = {
         reject(error);
       }
     }),
+
+  /**
+   * Logic Service: Delete Blog by Blog-Id
+   */
+  deleteBlogById: async (blogId) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        const blog = await blogSchema.findById(blogId);
+        if (!blog) {
+          resolve({
+            status: 404,
+            message: "Not Found",
+            data: null,
+          });
+        }
+        await blogSchema.findByIdAndDelete(blogId);
+        resolve({
+          status: 200,
+          message: "Delete blog successful",
+        });
+      } catch (error) {
+        reject(error);
+      }
+    }),
+
+  /**
+   * Logic Service: Update Blog by Blog-Id
+   */
 };

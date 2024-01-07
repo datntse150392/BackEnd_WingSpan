@@ -6,6 +6,7 @@ const {
   createBlog,
   getBlogs,
   getBlogById,
+  deleteBlogByBlogId,
 } = require("../controllers/blog-controller");
 
 /**
@@ -18,4 +19,5 @@ router.post("/getBlogById", getBlogById);
  */
 router.use(verifyToken);
 router.post("/createBlog", createBlog);
+router.delete("deleteBlogByBlogId", deleteBlogByBlogId);
 module.exports = router;

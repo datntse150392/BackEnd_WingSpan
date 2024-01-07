@@ -17,8 +17,8 @@ const server = http.createServer(app);
 // Socket.io Configuration
 const io = socketIo(server, {
   cors: {
-    // origin: "http://localhost:4200", // Điều chỉnh lại cho phù hợp với client của bạn
-    origin: "https://wingspan-dev-course.vercel.app",
+    origin: "http://localhost:4200", // Điều chỉnh lại cho phù hợp với client của bạn
+    // origin: "https://wingspan-dev-course.vercel.app",
     methods: ["GET", "POST"],
   },
 });
