@@ -15,7 +15,7 @@ Follow these steps to set up and run the WingSpan backend on your local machine:
 - Use the following commands to clone the backend repository and navigate to the project directory:
   ```bash
   git clone [repository_url]
-  cd wingSpan-backend
+  cd backend_swingspan
   ```
 - Replace `[repository_url]` with the URL of the Git repository.
 
@@ -24,19 +24,8 @@ Follow these steps to set up and run the WingSpan backend on your local machine:
 - Run the following command in the project's root directory to install backend dependencies:
   ```bash
   npm install
+  npm run dev
   ```
-
-## 4. **Configure Environment Variables:**
-
-- Create a `.env` file in the root directory and add the following configuration:
-  ```plaintext
-  PORT=3000
-  MONGO_URI=your_mongo_db_connection_string
-  SECRET_KEY=your_secret_key_for_authentication
-  ```
-- Replace `your_mongo_db_connection_string` with the connection string for your MongoDB database, and `your_secret_key_for_authentication` with a secure secret key for authentication.
-
----
 
 ## 1. Giới Thiệu | Introduction
 
