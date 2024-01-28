@@ -121,18 +121,19 @@ module.exports = {
         const voucher = await voucherSchema.findById(voucherId);
         // Get current time
         const currentTime = new Date().getTime();
-        if (
-          voucher &&
-          voucher.usedCount === voucher.maxUses &&
-          currentTime - voucher.expirationDate <= 0
-        ) {
-          resolve({
-            status: 400,
-            message: "Voucher has expired or used count maximum",
-            data: null,
-          });
-        } else if (voucher.usedCount < voucher.maxUses) {
-          voucher.usedCount += 1;
+        if (voucher) {
+          if (
+            voucher.usedCount === voucher.maxUses &&
+            currentTime - voucher.expirationDate <= 0
+          ) {
+            resolve({
+              status: 400,
+              message: "Voucher has expired or used count maximum",
+              data: null,
+            });
+          } else if (voucher.usedCount < voucher.maxUses) {
+            voucher.usedCount += 1;
+          }
         }
 
         // Create new transaction with new data form request
