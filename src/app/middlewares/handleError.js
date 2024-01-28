@@ -8,9 +8,9 @@ module.exports = {
     });
   },
 
-  notFound: (res) => {
+  notFound: (req, res, next) => {
     const error = createError.NotFound("This route is not defined");
-    return res.status(error.status).json({
+    res.status(error.status).json({
       status: error.status,
       message: error.message,
     });

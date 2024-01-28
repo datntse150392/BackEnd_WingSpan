@@ -10,6 +10,7 @@ const newFeedRouter = require("./newFeed.router");
 const blogRouter = require("./blog.router");
 const videoRouter = require("./video.router");
 const chatRoomRouter = require("./chatRoom.router");
+const { notFound } = require("../middlewares/handleError");
 
 const initRoutes = (app) => {
   app.use("/api/user", userRouter);
@@ -24,6 +25,8 @@ const initRoutes = (app) => {
   app.use("/api/blog", blogRouter);
   app.use("/api/video", videoRouter);
   app.use("/api/chatRoom", chatRoomRouter);
+
+  return app.use(notFound);
 };
 
 module.exports = initRoutes;

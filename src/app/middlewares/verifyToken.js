@@ -4,6 +4,9 @@ const { notAuth } = require("../middlewares/handleError");
 module.exports = {
   verifyToken: (req, res, next) => {
     const token = req.headers.authorization;
+    if (!token) {
+      return notAuth("Authorization header is missing", res);
+    }
     const parts = token.split(" ");
     if (parts.length === 2 && parts[0] === "Bearer") {
       const access_token = parts[1];
