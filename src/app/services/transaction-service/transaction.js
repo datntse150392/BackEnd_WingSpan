@@ -116,7 +116,6 @@ module.exports = {
             data: null,
           });
         }
-
         // Check voucher is exsit
         const voucher = await voucherSchema.findById(voucherId);
         // Get current time
@@ -134,6 +133,8 @@ module.exports = {
           } else if (voucher.usedCount < voucher.maxUses) {
             voucher.usedCount += 1;
           }
+          // Log: Saving the voucher
+          await voucher.save();
         }
 
         // Create new transaction with new data form request
@@ -149,9 +150,6 @@ module.exports = {
           status: status,
           voucher: voucher ? voucher : null,
         });
-
-        // Log: Saving the voucher
-        await voucher.save();
 
         // Generate an activation code (you can use a library like `crypto` or any other method)
         const activationCodes = [];
