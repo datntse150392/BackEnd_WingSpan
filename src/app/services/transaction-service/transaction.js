@@ -118,7 +118,7 @@ module.exports = {
         }
 
         // Check voucher is exsit
-        const voucher = await voucherSchema.findById({ _id: voucherId });
+        const voucher = await voucherSchema.findById(voucherId);
         // Get current time
         const currentTime = new Date().getTime();
         if (
