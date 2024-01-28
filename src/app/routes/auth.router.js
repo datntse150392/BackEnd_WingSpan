@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const {
-  loginAccount,
-  registerAccount,
   isCheckAccount,
   signIn,
   signUp,

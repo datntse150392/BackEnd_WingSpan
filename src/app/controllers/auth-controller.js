@@ -21,6 +21,7 @@ module.exports = {
       }
 
       const response = await authsService.signIn(req.body);
+      req.headers.authorization = response && response.access_token;
       return res.status(200).json(response);
     } catch (error) {
       res.status(500).json({
@@ -52,6 +53,7 @@ module.exports = {
         return badRequest("The user is contained in the system", res);
       } else {
         const response = await authsService.signUp(req.body);
+        req.headers.authorization = response && response.access_token;
         return res.status(200).json(response);
       }
     } catch (error) {

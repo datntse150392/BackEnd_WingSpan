@@ -35,7 +35,6 @@ module.exports = {
                 { expiresIn: "5d" }
               )
             : null;
-
           resolve({
             status: 200,
             access_token: token && `Bearer ${token}`,
